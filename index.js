@@ -1,4 +1,11 @@
-const io = require("socket.io")(4000);
+const express = require("express");
+const app = express();
+const server = require('http').createServer(app);
+const io = require("socket.io").listen(server);
+
+server.listen(process.env.PORT || 12000, "localhost", (error) => {
+  console.log(`Started server on port ${process.env.PORT || 12000}`)
+});
 
 let connectedUsers = [];
 
